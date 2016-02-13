@@ -1,0 +1,81 @@
+doctype html 5
+html
+    head
+        title Form Awesome
+        link(rel="stylesheet", href="/styles/font-awesome.min.css")
+        link(rel="stylesheet", href="/styles/form.min.css")
+        meta(name="viewport", content="initial-scale=1, maximum-scale=1")
+    body
+        #wrapper
+            form(method="post")
+                ol
+                    li.active.text
+                        // first name
+                        - var n = 0;
+                        span First thing first, what's ya name?
+                        input(type="text", name="text-#{n}")
+                    li.text
+                        // last name
+                        - n++;
+                        span All right, 
+                            span(data-answer="0") {0}
+                            |. How about your last name?
+                        input(type="text", name="text-#{n}")
+                    li.bigText
+                        // address
+                        - n++;
+                        span Well, Mr. 
+                            span(data-answer="1") {1}
+                            |, where do you live?
+                        textarea(name="bigtext-#{n}")
+                    li.choice
+                        // choice
+                        - n++;
+                        span Do you know the answer?
+                        input(type="radio", name="choice-#{n}", data-value="Yes")
+                        input(type="radio", name="choice-#{n}", data-value="No", data-goto="6")
+                        input(type="radio", name="choice-#{n}", data-value="Maybe")
+                    li.choice
+                        // yes no
+                        - n++;
+                        span So how about this?
+                        input(type="radio", name="yesno-#{n}", data-value="Yes")
+                        input(type="radio", name="yesno-#{n}", data-value="No")
+                    li.scale
+                        // scale
+                        - n++;
+                        span So, 
+                            span(data-answer="0") {0}
+                            |, how good are you at stuff?
+                        input(type="radio", name="scale-#{n}", data-points="0")
+                        input(type="radio", name="scale-#{n}", data-points="1")
+                        input(type="radio", name="scale-#{n}", data-points="2")
+                        input(type="radio", name="scale-#{n}", data-points="3")
+                        input(type="radio", name="scale-#{n}", data-points="4")
+                        input(type="radio", name="scale-#{n}", data-points="5")
+                        input(type="radio", name="scale-#{n}", data-points="6")
+                        input(type="radio", name="scale-#{n}", data-points="7")
+                        input(type="radio", name="scale-#{n}", data-points="8")
+                        input(type="radio", name="scale-#{n}", data-points="9")
+                        input(type="radio", name="scale-#{n}", data-points="10")
+                    li.rating.stars
+                        // scale
+                        - n++;
+                        span How would you rate yourself, 
+                            span(data-answer="0") {0}
+                            |?
+                        input(type="radio", name="rating-#{n}", data-points="1")
+                        input(type="radio", name="rating-#{n}", data-points="2")
+                        input(type="radio", name="rating-#{n}", data-points="3")
+                        input(type="radio", name="rating-#{n}", data-points="4")
+                        input(type="radio", name="rating-#{n}", data-points="5")
+                footer
+                    #preview
+                        #progress
+                            span
+                        input(type="submit", disabled)
+                    div#move
+                        i.fa.fa-hand-o-up
+                        i.fa.fa-hand-o-down
+        script(src="/js/jquery.min.js")
+        script(src="/js/form.js")

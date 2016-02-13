@@ -1,0 +1,32 @@
+doctype html 5
+html
+    head
+        title Form Awesome
+        link(rel="stylesheet", href="/styles/font-awesome.min.css")
+        link(rel="stylesheet", href="/styles/form.min.css")
+        link(rel="stylesheet", href="/styles/new.min.css")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+    body
+        #wrapper
+            form(method="post")
+                ol
+                    li 
+                        span Please select an item below.
+                        #create
+                            ul
+                                li(data-create="text")
+                                    div Text
+                                li(data-create="bigtext")
+                                    div Big text
+                                li(data-create="choice")
+                                    div Choice
+                                li(data-create="scale")
+                                    div Scale
+                                li(data-create="rating")
+                                    div Rating
+                footer
+                    #preview
+                        input(type="submit")
+        script(src="/js/jquery.min.js")
+        script(src="/js/form.js")
+        script(src="/js/new.js")

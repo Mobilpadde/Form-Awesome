@@ -1,0 +1,293 @@
+// output:form.min.css
+$bg: #d9eba3;
+$color: #ed6863;
+$bg: #b77c82;
+$color: #fff;
+//$bg: #fafafa;
+//$color: #1a1a1a;
+
+$selection: #6ae4b3;
+
+body{
+    font: 16px/1.1 sans-serif;
+    background: $bg;
+    color: $color;
+    padding-bottom: 65px;
+    margin: 0;
+    //overflow: hidden;
+
+    ::selection{
+        background: transparent;
+    }
+
+    .clear{ clear: both; }
+
+    form{
+        text-align: center;
+
+        input, textarea{
+            background: transparent;
+            color: $color;
+            border: none;
+            -webkit-appearance: none;
+            resize: none;
+
+            &::selection{
+                background: rgba($selection, .5);
+            }
+        }
+
+        input:focus, textarea:focus{
+            outline: none;
+        }
+
+        ol{
+            //width: 100px;
+            text-align: left;
+            display: inline-block;
+            position: relative;
+            //left: -350px;
+
+            /*@media screen and (max-width: 800px){
+                width: 10%;
+                left: 0;
+            }*/
+
+            input, textarea{
+                width: 100%;
+            }
+
+            li{
+                width: 700px;
+                padding: 50px 0;
+                opacity: 0.5;
+                transition: opacity 250ms ease-in-out;
+
+                @media screen and (max-width: 800px){
+                    width: 90%;
+                }
+
+                &:nth-of-type(1){
+                    padding-top: 0;
+                }
+
+                &:last-child{
+                    padding-bottom: 0;
+                }
+
+                &.active{
+                    opacity: 1;
+                }
+
+                span{
+                    margin: 10px;
+                    margin-left: 0;
+                    display: block;
+
+                    span{
+                        margin: 0;
+                        display: inline;
+                    }
+                }
+
+                input[type="text"]{
+                    font-size: 2em;
+                    border-bottom: 1px solid darken($bg, 5%);
+                }
+
+                textarea{
+                    height: 150px;
+                    font-size: 2em;
+                    padding: 10px;
+                    border-left: 3px dashed darken($bg, 5%);
+                }
+
+                &.choice input[type="radio"], &.choice input[type="checkbox"]{
+                    background: darken($bg, 5%);
+                    padding: 10px;
+                    font-size: 1.2em;
+
+                    &:before{
+                        content: attr(data-value);
+                    }
+
+                    &:checked{
+                        background: $color;
+                        color: darken($bg, 5%);
+                    }
+                }
+
+                &.scale input[type="radio"]{
+                    width: 25px;
+                    height: 25px;
+                    padding: 20px;
+                    margin: 0;
+                    font-size: 1.2em;
+                    border-top: 1px solid $color;
+                    border-bottom: 1px solid $color;
+
+                    &:before{
+                        content: attr(data-points);
+                        width: 40px;
+                        height: 33px;
+                        padding-top: 7px;
+                        font-size: 1.2em;
+                        text-align: center;
+                        display: block;
+                        position: relative;
+                        top: -20px;
+                        left: -20px;
+                    }
+
+                    &:checked{
+                        color: $bg;
+                    }
+
+                    &:checked:before{
+                        background: $color;
+                    }
+
+                    &:nth-of-type(1){
+                        border-left: 1px solid $color;
+                    }
+
+                    &:last-child{
+                        border-right: 1px solid $color;
+                    }
+                }
+
+                &.rating input[type="radio"]{
+                    width: 32px;
+                    height: 32px;
+                    font-size: 2em;
+                    border: none;
+                    text-align: center;
+
+                    &:after{
+                        content: attr(data-points);
+                        padding: 2px;
+                        font-size: 0.3em;
+                        display: inline-block;
+                    }
+                }
+
+                &.stars input[type="radio"]{
+                    &:before{
+                        font-family: fontawesome;
+                        content: "\f006";
+                    }
+
+                    &:checked:before{
+                        font-family: fontawesome;
+                        content: "\f005";
+                    }
+                }
+
+                &.tup input[type='radio']{
+                    &:before{
+                        font-family: fontawesome;
+                        content: "\f087";
+                    }
+
+                    &:checked:before{
+                        font-family: fontawesome;
+                        content: "\f164";
+                    }
+                }
+
+                &.battery input[type='radio']{
+                    &:before{
+                        font-family: fontawesome;
+                        content: "\f244";
+                    }
+
+                    &:checked:before{
+                        font-family: fontawesome;
+                        content: "\f240";
+                    }
+                }
+
+                &.smiley input[type='radio']{
+                    &:before{
+                        font-family: fontawesome;
+                        content: "\f119";
+                    }
+
+                    &:checked:before{
+                        font-family: fontawesome;
+                        content: "\f118";
+                    }
+                }
+            }
+        }
+    }
+
+    footer{
+        background: darken($bg, 5%);
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid darken($bg, 10%);
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        #preview{
+            height: 25px;
+            display: inline-block;
+
+            #progress{
+                width: 300px;
+                height: 25px;
+                border-top: 1px solid darken($bg, 10%);
+                border-left: 1px solid darken($bg, 10%);
+                border-bottom: 1px solid darken($bg, 10%);
+                display: inline-block;
+
+                span{
+                    background: $color;
+                    width: 0%;
+                    height: 100%;
+                    display: block;
+                    transition: width 250ms ease-in-out;
+                }
+            }
+
+            input[type="submit"]{
+                background: transparent;
+                color: $color;
+                height: 26.5px;
+                font-size: 1.1em;
+                border: none;
+                border-top: 1px solid darken($bg, 10%);
+                border-right: 1px solid darken($bg, 10%);
+                border-bottom: 1px solid darken($bg, 10%);
+                display: inline-block;
+                position: relative;
+                top: -7px;
+
+                &[disabled]{
+                    opacity: .5;
+                }
+            }
+        }
+
+        #move{
+            color: $bg;
+            float: right;
+            position: relative;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+
+            i{
+                background: $color;
+                width: 15px;
+                height: 15px;
+                padding: 5px;
+                border-radius: 4px;
+                margin-left: 5px;
+            }
+        }
+    }
+}

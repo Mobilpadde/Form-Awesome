@@ -1,0 +1,54 @@
+doctype html 5
+html
+    head
+        title Form Awesome
+        link(rel="stylesheet", href="/styles/font-awesome.min.css")
+        link(rel="stylesheet", href="/styles/form.min.css")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+    body
+        #wrapper
+            form(method="post", name="test")
+                ol
+                    - var n = 0;
+                    each field in form.fields
+                        - var type = field.type.split(".");
+                        li(class="#{type[0]}#{(type[1] == undefined ? '' : ' ' + type[1])}")
+                            - var span = field.info.replace(/\{\d+\}/g, function(){
+                            -     var str = "";
+                            -     for(var i = 0; i < arguments.length - 1; i++){
+                            -         str += (typeof arguments[i] == "string" ? "<span data-answer='" + arguments[i].replace(/[\{\}]/g, "") + "'>" + arguments[i] + "</span>" : "");
+                            -     }
+                            -     return str; 
+                            - });
+                            span !{span}
+                            case type[0]
+                                when "text"
+                                    input(type="text", name="text-#{n++}")
+                                when "bigtext"
+                                    textarea(name="bigtext-#{n++}")
+                                when "choice"
+                                    each choice in field.choices
+                                        input(type="radio", name="choice-#{n}", data-value="#{choice.value}", data-goto="#{choice.goto ? choice.goto : ''}")
+                                    - n++;
+                                when "scale"
+                                    - var i = (field.zero ? 0 : 1);
+                                    while i < field.steps + (field.zero ? 0 : 1)
+                                        input(type="radio", name="scale-#{n}", data-points="#{i}")
+                                        - i++;
+                                    - n++;
+                                when "rating"
+                                    - var i = (field.zero ? 0 : 1);
+                                    while i < field.steps + (field.zero ? 0 : 1)
+                                        input(type="radio", name="rating-#{n}", data-points="#{i}")
+                                        - i++;
+                                    - n++;
+                footer
+                    #preview
+                        #progress
+                            span
+                        input(type="submit", disabled)
+                    div#move
+                        i.fa.fa-hand-o-up
+                        i.fa.fa-hand-o-down
+        script(src="/js/jquery.min.js")
+        script(src="/js/form.js")

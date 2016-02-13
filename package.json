@@ -1,0 +1,16 @@
+{
+  "name": "form-awesome",
+  "version": "0.0.1",
+  "description": "Awesome forms",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Mads Cordes",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.0",
+    "express": "^4.13.3",
+    "nedb": "^1.2.1"
+  }
+}
